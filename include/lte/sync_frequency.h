@@ -24,7 +24,7 @@
 
 #include <lte/api.h>
 #include <gnuradio/sync_block.h>
-#include <gnuradio/analog/sig_source_c.h>
+#include <gnuradio/analog/sig_source.h>
 
 namespace gr {
   namespace lte {
@@ -36,20 +36,20 @@ namespace gr {
      * This block calculates FFO by correlating CPs and sets the frequency of a signal source block.
      *
      */
-    class LTE_API sync_frequency_c : virtual public gr::sync_block
+    class LTE_API sync_frequency : virtual public gr::sync_block
     {
      public:
-      typedef boost::shared_ptr<sync_frequency_c> sptr;
+      typedef boost::shared_ptr<sync_frequency> sptr;
 
       /*!
-       * \brief Return a shared_ptr to a new instance of lte::sync_frequency_c.
+       * \brief Return a shared_ptr to a new instance of lte::sync_frequency.
        *
-       * To avoid accidental use of raw pointers, lte::sync_frequency_c's
+       * To avoid accidental use of raw pointers, lte::sync_frequency's
        * constructor is in a private implementation
-       * class. lte::sync_frequency_c::make is the public interface for
+       * class. lte::sync_frequency::make is the public interface for
        * creating new instances.
        */
-      static sptr make(boost::shared_ptr<gr::analog::sig_source_c> &sig, int fftl, std::string name = "sync_frequency_c");
+      static sptr make(boost::shared_ptr<gr::analog::sig_source_c> &sig, int fftl, std::string name = "sync_frequency");
     };
 
   } // namespace lte

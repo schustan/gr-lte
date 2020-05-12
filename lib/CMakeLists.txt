@@ -45,7 +45,7 @@ list(APPEND lte_sources
     correlator.cc
     sss_symbol_selector_cvc_impl.cc
     sss_tagger_cc_impl.cc
-    sync_frequency_c_impl.cc
+    sync_frequency_impl.cc
     descrambler_vfvf_impl.cc
     pcfich_demux_vcvc_impl.cc
     mimo_pss_coarse_sync_impl.cc
@@ -108,31 +108,31 @@ message(STATUS "Building for version: ${VERSION} / ${LIBVER}")
 ########################################################################
 # Build and register unit test
 ########################################################################
-include(GrTest)
+#include(GrTest)
 
-include_directories(${CPPUNIT_INCLUDE_DIRS})
+#include_directories(${CPPUNIT_INCLUDE_DIRS})
 
-list(APPEND test_lte_sources
-    test_lte.cc
-    qa_lte.cc
-)
+#list(APPEND test_lte_sources
+#    test_lte.cc
+#    qa_lte.cc
+#)
 # Anything we need to link to for the unit tests go here
-list(APPEND GR_TEST_TARGET_DEPS 
-    test-lte
-    ${GNURADIO_RUNTIME_LIBRARIES}
-    ${Boost_LIBRARIES}
-    ${CPPUNIT_LIBRARIES}
-    ${FILTER_LIBRARIES}
-    gnuradio-lte
-)
+#list(APPEND GR_TEST_TARGET_DEPS 
+#    test-lte
+#    ${GNURADIO_RUNTIME_LIBRARIES}
+#    ${Boost_LIBRARIES}
+#    ${CPPUNIT_LIBRARIES}
+#    ${FILTER_LIBRARIES}
+#    gnuradio-lte
+#)
+#add_executable(test-lte ${test_lte_sources})
+#if(NOT test_lte_sources)
+#    MESSAGE(STATUS "No C++ unit tests... skipping")
+#    return()
+#endif(NOT test_lte_sources)
 
-if(NOT test_lte_sources)
-    MESSAGE(STATUS "No C++ unit tests... skipping")
-    return()
-endif(NOT test_lte_sources)
-
-foreach(qa_file ${test_lte_sources})
-    GR_ADD_CPP_TEST("lte_${qa_file}"
-        ${CMAKE_CURRENT_SOURCE_DIR}/${qa_file}
-    )
-endforeach(qa_file)
+#foreach(qa_file ${test_lte_sources})
+#    GR_ADD_CPP_TEST("${qa_file}"
+#        ${CMAKE_CURRENT_SOURCE_DIR}/${qa_file}
+#    )
+#endforeach(qa_file)

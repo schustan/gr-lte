@@ -142,7 +142,7 @@ def main():
     ant = 0
 
     [pilot_pos, pilot_vals] = frame_pilot_value_and_position(N_rb_dl, cell_id, Ncp, ant)
-    print pilot_pos
+    print (pilot_pos)
 
 if __name__ == "__main__":
     main()

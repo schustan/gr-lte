@@ -21,12 +21,12 @@
 #ifndef INCLUDED_LTE_SYNC_FREQUENCY_C_IMPL_H
 #define INCLUDED_LTE_SYNC_FREQUENCY_C_IMPL_H
 
-#include <lte/sync_frequency_c.h>
+#include <lte/sync_frequency.h>
 
 namespace gr {
   namespace lte {
 
-    class sync_frequency_c_impl : public sync_frequency_c
+    class sync_frequency_impl : public sync_frequency
     {
      private:
         // basic attributes
@@ -49,8 +49,8 @@ namespace gr {
         gr_complex corr(gr_complex *res, gr_complex *x, gr_complex *y, int len);
 
      public:
-      sync_frequency_c_impl(boost::shared_ptr<gr::analog::sig_source_c> &sig, int fftl, std::string& name);
-      ~sync_frequency_c_impl();
+      sync_frequency_impl(boost::shared_ptr<gr::analog::sig_source_c> &sig, int fftl, std::string& name);
+      ~sync_frequency_impl();
 
       // Where all the action really happens
       int work(int noutput_items,

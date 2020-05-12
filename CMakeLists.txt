@@ -157,13 +157,7 @@ endif(APPLE)
 find_package(CppUnit)
 find_package(FFTW3f)
 find_package(Volk)
-include_directories(
-    ${GNURADIO_ALL_INCLUDE_DIRS}
-    ${GNURADIO_INCLUDE_DIRS}
-    )
-link_directories(
-    ${GNURAIOD_RUNTIME_LIBRARY_DIRS}
-    )
+
 if(NOT CPPUNIT_FOUND)
     message(FATAL_ERROR "CppUnit required to compile lte")
 endif()

@@ -23,7 +23,7 @@
 #endif
 
 #include <gnuradio/io_signature.h>
-#include "sync_frequency_c_impl.h"
+#include "sync_frequency_impl.h"
 #include <fftw3.h>
 #include <volk/volk.h>
 #include <cmath>
@@ -31,17 +31,17 @@
 namespace gr {
   namespace lte {
 
-    sync_frequency_c::sptr
-    sync_frequency_c::make(boost::shared_ptr<gr::analog::sig_source_c> &sig, int fftl, std::string name)
+    sync_frequency::sptr
+    sync_frequency::make(boost::shared_ptr<gr::analog::sig_source_c> &sig, int fftl, std::string name)
     {
       return gnuradio::get_initial_sptr
-        (new sync_frequency_c_impl(sig, fftl, name));
+        (new sync_frequency_impl(sig, fftl, name));
     }
 
     /*
      * The private constructor
      */
-    sync_frequency_c_impl::sync_frequency_c_impl(boost::shared_ptr<gr::analog::sig_source_c> &sig, int fftl, std::string& name)
+    sync_frequency_impl::sync_frequency_impl(boost::shared_ptr<gr::analog::sig_source_c> &sig, int fftl, std::string& name)
       : gr::sync_block(name,
               gr::io_signature::make( 1, 1, sizeof(gr_complex)),
               gr::io_signature::make(0, 0, 0)),
@@ -62,13 +62,13 @@ namespace gr {
     /*
      * Our virtual destructor.
      */
-    sync_frequency_c_impl::~sync_frequency_c_impl()
+    sync_frequency_impl::~sync_frequency_impl()
     {
         fftwf_free(d_buffer);
     }
 
     int
-    sync_frequency_c_impl::work(int noutput_items,
+    sync_frequency_impl::work(int noutput_items,
 			  gr_vector_const_void_star &input_items,
 			  gr_vector_void_star &output_items)
     {
@@ -124,7 +124,7 @@ namespace gr {
     }
 
     void
-    sync_frequency_c_impl::calc_f_off_av(){
+    sync_frequency_impl::calc_f_off_av(){
         int fftl = d_fftl;
         int cpl = d_cpl;
         int cpl0 = d_cpl0;
@@ -164,7 +164,7 @@ namespace gr {
     }
 
     gr_complex
-    sync_frequency_c_impl::corr(gr_complex *res, gr_complex *x, gr_complex *y, int len)
+    sync_frequency_impl::corr(gr_complex *res, gr_complex *x, gr_complex *y, int len)
     {
         volk_32fc_conjugate_32fc_a(y, y, len);
         volk_32fc_x2_multiply_32fc_a(res, x, y, len);

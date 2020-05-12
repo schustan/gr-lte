@@ -51,7 +51,7 @@ class pcfich_scramble_sequencer_m(gr.sync_block):
             return
         else:
             self.cell_id = cell_id
-        print "received cell_id = " + str(cell_id)
+        print ("received cell_id = " + str(cell_id))
 
         seqs = pmt.make_vector(10, pmt.make_vector(32, pmt.from_double(0.0)))
         for ns in range(10):

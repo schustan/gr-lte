@@ -30,7 +30,7 @@
 #include "lte/correlator.h"
 #include "lte/sss_symbol_selector_cvc.h"
 #include "lte/sss_tagger_cc.h"
-#include "lte/sync_frequency_c.h"
+#include "lte/sync_frequency.h"
 #include "lte/descrambler_vfvf.h"
 #include "lte/pcfich_demux_vcvc.h"
 #include "lte/mimo_pss_coarse_sync.h"
@@ -90,8 +90,8 @@ GR_SWIG_BLOCK_MAGIC2(lte, pss_tagger_cc);
 GR_SWIG_BLOCK_MAGIC2(lte, sss_symbol_selector_cvc);
 %include "lte/sss_tagger_cc.h"
 GR_SWIG_BLOCK_MAGIC2(lte, sss_tagger_cc);
-%include "lte/sync_frequency_c.h"
-GR_SWIG_BLOCK_MAGIC2(lte, sync_frequency_c);
+%include "lte/sync_frequency.h"
+GR_SWIG_BLOCK_MAGIC2(lte, sync_frequency);
 %include "lte/descrambler_vfvf.h"
 GR_SWIG_BLOCK_MAGIC2(lte, descrambler_vfvf);
 %include "lte/pcfich_demux_vcvc.h"
