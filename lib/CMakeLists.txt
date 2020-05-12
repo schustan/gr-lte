@@ -59,25 +59,51 @@ list(APPEND lte_sources
     mimo_sss_tagger_impl.cc
     mimo_remove_cp_impl.cc )
 
-list(APPEND lte_libs
+set(lte_sources "${lte_sources}" PARENT_SCOPE)
+if(NOT lte_sources)
+    MESSAGE(STATUS "No C++ sources... skipping lib/")
+    return()
+endif(NOT lte_sources)
+
+add_library(gnuradio-lte SHARED ${lte_sources})
+
+target_link_libraries(gnuradio-lte 
+    gnuradio::gnuradio-runtime
+    gnuradio::gnuradio-blocks
+    gnuradio::gnuradio-analog
+    gnuradio::gnuradio-filter
+    gnuradio::gnuradio-fft
     ${Boost_LIBRARIES}
-    ${GNURADIO_RUNTIME_LIBRARIES}
     ${VOLK_LIBRARIES}
     ${FFTW3F_LIBRARIES}
 )
 
-add_library(gnuradio-lte SHARED ${lte_sources})
-target_link_libraries(gnuradio-lte ${lte_libs})
+target_include_directories(gnuradio-lte
+    PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
+    PUBLIC $<BUILD_INTERFACE:${Boost_INCLUDE_DIR}>
+    PUBLIC $<INSTALL_INTERFACE:include>
+)
+
+
 set_target_properties(gnuradio-lte PROPERTIES DEFINE_SYMBOL "gnuradio_lte_EXPORTS")
+
+if(APPLE)
+    set_target_properties(gnuradio-lte PROPERTIES
+        INSTALL_NAME_DIR "${CMAKE_INSTALL_PREFIX}/lib"
+    )
+endif(APPLE)
 
 ########################################################################
 # Install built library files
 ########################################################################
-install(TARGETS gnuradio-lte
-    LIBRARY DESTINATION lib${LIB_SUFFIX} # .so/.dylib file
-    ARCHIVE DESTINATION lib${LIB_SUFFIX} # .lib file
-    RUNTIME DESTINATION bin              # .dll file
-)
+include(GrMiscUtils)
+GR_LIBRARY_FOO(gnuradio-lte)
+
+########################################################################
+# Print summary
+########################################################################
+message(STATUS "Using install prefix: ${CMAKE_INSTALL_PREFIX}")
+message(STATUS "Building for version: ${VERSION} / ${LIBVER}")
 
 ########################################################################
 # Build and register unit test
@@ -87,20 +113,26 @@ include(GrTest)
 include_directories(${CPPUNIT_INCLUDE_DIRS})
 
 list(APPEND test_lte_sources
-    ${CMAKE_CURRENT_SOURCE_DIR}/test_lte.cc
-    ${CMAKE_CURRENT_SOURCE_DIR}/qa_lte.cc
-#    ${CMAKE_CURRENT_SOURCE_DIR}/qa_correlator.cc
+    test_lte.cc
+    qa_lte.cc
+)
+# Anything we need to link to for the unit tests go here
+list(APPEND GR_TEST_TARGET_DEPS 
+    test-lte
+    ${GNURADIO_RUNTIME_LIBRARIES}
+    ${Boost_LIBRARIES}
+    ${CPPUNIT_LIBRARIES}
+    ${FILTER_LIBRARIES}
+    gnuradio-lte
 )
 
-add_executable(test-lte ${test_lte_sources})
+if(NOT test_lte_sources)
+    MESSAGE(STATUS "No C++ unit tests... skipping")
+    return()
+endif(NOT test_lte_sources)
 
-target_link_libraries(
-  test-lte
-  ${GNURADIO_RUNTIME_LIBRARIES}
-  ${Boost_LIBRARIES}
-  ${CPPUNIT_LIBRARIES}
-  ${FILTER_LIBRARIES}
-  gnuradio-lte
-)
-
-GR_ADD_TEST(test_lte test-lte)
+foreach(qa_file ${test_lte_sources})
+    GR_ADD_CPP_TEST("lte_${qa_file}"
+        ${CMAKE_CURRENT_SOURCE_DIR}/${qa_file}
+    )
+endforeach(qa_file)
