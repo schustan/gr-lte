@@ -32,7 +32,7 @@ namespace gr {
   namespace lte {
 
     sync_frequency::sptr
-    sync_frequency::make(boost::shared_ptr<gr::analog::sig_source_c> &sig, int fftl, std::string name)
+    sync_frequency::make(std::shared_ptr<gr::analog::sig_source_c> &sig, int fftl, std::string name)
     {
       return gnuradio::get_initial_sptr
         (new sync_frequency_impl(sig, fftl, name));
@@ -41,7 +41,7 @@ namespace gr {
     /*
      * The private constructor
      */
-    sync_frequency_impl::sync_frequency_impl(boost::shared_ptr<gr::analog::sig_source_c> &sig, int fftl, std::string& name)
+    sync_frequency_impl::sync_frequency_impl(std::shared_ptr<gr::analog::sig_source_c> &sig, int fftl, std::string& name)
       : gr::sync_block(name,
               gr::io_signature::make( 1, 1, sizeof(gr_complex)),
               gr::io_signature::make(0, 0, 0)),

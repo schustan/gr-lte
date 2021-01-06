@@ -39,7 +39,7 @@ namespace gr {
     class LTE_API sync_frequency : virtual public gr::sync_block
     {
      public:
-      typedef boost::shared_ptr<sync_frequency> sptr;
+      typedef std::shared_ptr<sync_frequency> sptr;
 
       /*!
        * \brief Return a shared_ptr to a new instance of lte::sync_frequency.
@@ -49,7 +49,7 @@ namespace gr {
        * class. lte::sync_frequency::make is the public interface for
        * creating new instances.
        */
-      static sptr make(boost::shared_ptr<gr::analog::sig_source_c> &sig, int fftl, std::string name = "sync_frequency");
+      static sptr make(std::shared_ptr<gr::analog::sig_source_c> &sig, int fftl, std::string name = "sync_frequency");
     };
 
   } // namespace lte
