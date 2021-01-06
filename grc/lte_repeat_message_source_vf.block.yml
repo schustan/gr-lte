@@ -8,7 +8,6 @@ parameters:
 -   id: vector_len
     label: vector length
     dtype: int
-    hide: ${ 'part' if vlen == 1 else 'none' }
 
 inputs:
 -   domain: message

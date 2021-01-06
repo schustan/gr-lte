@@ -11,7 +11,6 @@ parameters:
 -   id: vlen
     label: vector length
     dtype: int
-    hide: ${ 'part' if vlen == 1 else 'none' }
 -   id: style
     label: RX style
     dtype: string

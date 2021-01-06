@@ -11,7 +11,6 @@ parameters:
 -   id: vlen
     label: Vec length
     dtype: int
-    hide: ${ 'part' if vlen == 1 else 'none' }
 
 inputs:
 -   domain: stream

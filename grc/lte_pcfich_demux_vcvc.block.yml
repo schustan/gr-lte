@@ -8,7 +8,6 @@ parameters:
 -   id: N_rb_dl
     label: resource blocks
     dtype: int
-    hide: ${ 'part' if vlen == 1 else 'none' }
 -   id: key
     label: Input key
     dtype: string

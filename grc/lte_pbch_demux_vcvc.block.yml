@@ -9,11 +9,9 @@ parameters:
     label: RX antennas
     dtype: int
     default: '1'
-    hide: ${ 'part' if vlen == 1 else 'none' }
 -   id: N_rb_dl
     label: resource blocks
     dtype: int
-    hide: ${ 'part' if vlen == 1 else 'none' }
 
 inputs:
 -   domain: stream

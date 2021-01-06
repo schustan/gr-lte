@@ -8,7 +8,6 @@ parameters:
 -   id: data_len
     label: payload length
     dtype: int
-    hide: ${ 'part' if vlen == 1 else 'none' }
 -   id: final_xor
     label: final XOR
     dtype: int

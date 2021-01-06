@@ -8,11 +8,9 @@ parameters:
 -   id: N_rb_dl
     label: resource blocks
     dtype: int
-    hide: ${ 'part' if vlen == 1 else 'none' }
 -   id: fftl
     label: FFT length
     dtype: int
-    hide: ${ 'part' if vlen == 1 else 'none' }
 
 inputs:
 -   domain: stream

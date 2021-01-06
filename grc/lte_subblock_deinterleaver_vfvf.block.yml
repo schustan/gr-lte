@@ -8,11 +8,9 @@ parameters:
 -   id: num_groups
     label: REGs per group
     dtype: int
-    hide: ${ 'part' if vlen == 1 else 'none' }
 -   id: items_per_group
     label: items per REG
     dtype: int
-    hide: ${ 'part' if vlen == 1 else 'none' }
 
 inputs:
 -   domain: stream
