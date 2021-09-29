@@ -48,7 +48,7 @@ class pbch_scramble_sequencer_m(gr.sync_block):
             return
         else:
             self.cell_id = cell_id
-        print "received cell_id = " + str(cell_id)
+        print("received cell_id = " + str(cell_id))
 
         seqs = []
 

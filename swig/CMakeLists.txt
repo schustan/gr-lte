@@ -20,9 +20,12 @@
 ########################################################################
 # Include swig generation macros
 ########################################################################
+
+cmake_minimum_required(VERSION 3.12)
+
 find_package(SWIG)
-find_package(PythonLibs 2)
-if(NOT SWIG_FOUND OR NOT PYTHONLIBS_FOUND)
+find_package(Python3 COMPONENTS Interpreter Development)
+if(NOT SWIG_FOUND OR NOT Python3_FOUND)
     return()
 endif()
 include(GrSwig)
@@ -31,9 +34,15 @@ include(GrPython)
 ########################################################################
 # Setup swig generation
 ########################################################################
-foreach(incdir ${GNURADIO_RUNTIME_INCLUDE_DIRS})
-    list(APPEND GR_SWIG_INCLUDE_DIRS ${incdir}/gnuradio/swig)
-endforeach(incdir)
+
+# updated to 3.8
+#foreach(incdir ${GNURADIO_RUNTIME_INCLUDE_DIRS})
+#    list(APPEND GR_SWIG_INCLUDE_DIRS ${incdir}/gnuradio/swig)
+#endforeach(incdir)
+set(GR_SWIG_INCLUDE_DIRS $<TARGET_PROPERTY:gnuradio::runtime_swig,INTERFACE_INCLUDE_DIRECTORIES>)
+set(GR_SWIG_TARGET_DEPS gnuradio::runtime_swig)
+
+
 
 set(GR_SWIG_LIBRARIES gnuradio-lte)
 set(GR_SWIG_DOC_FILE ${CMAKE_CURRENT_BINARY_DIR}/lte_swig_doc.i)

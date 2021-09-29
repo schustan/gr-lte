@@ -21,7 +21,7 @@
 
 from gnuradio import gr, gr_unittest, blocks
 import lte_swig as lte
-import lte_test
+from . import lte_test
 import numpy as np
 
 class qa_subblock_deinterleaver_vfvf (gr_unittest.TestCase):
@@ -30,7 +30,7 @@ class qa_subblock_deinterleaver_vfvf (gr_unittest.TestCase):
         self.tb = gr.top_block ()
         self.vlen = 80
         self.group_items = 1
-        data = lte_test.interleave(range(self.vlen))
+        data = lte_test.interleave(list(range(self.vlen)))
         self.src = blocks.vector_source_f(data, False, self.vlen)
         self.subdeint = lte.subblock_deinterleaver_vfvf(self.vlen, self.group_items)
         self.snk = blocks.vector_sink_f(self.vlen)
@@ -47,9 +47,9 @@ class qa_subblock_deinterleaver_vfvf (gr_unittest.TestCase):
         res = self.snk.data()
         for i in range(80):
             if not i == int(res[i]):
-                print "fail"
+                print("fail")
                 assert(1 == 0)
-        print res
+        print(res)
         
     def test_002_t(self):
         self.tb2 = gr.top_block()
@@ -88,7 +88,7 @@ class qa_subblock_deinterleaver_vfvf (gr_unittest.TestCase):
         
         self.tb2.run()
         res = snk.data()
-        print res[110:130]
+        print(res[110:130])
         
         self.assertFloatTuplesAlmostEqual(tuple(my_res), res)
 #        for i in range(test_len):

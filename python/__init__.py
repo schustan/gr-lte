@@ -31,9 +31,9 @@ try:
     from dl import RTLD_GLOBAL as _RTLD_GLOBAL
 except ImportError:
     try:
-	from DLFCN import RTLD_GLOBAL as _RTLD_GLOBAL
+	    from DLFCN import RTLD_GLOBAL as _RTLD_GLOBAL
     except ImportError:
-	pass
+	    pass
 
 if _RTLD_GLOBAL != 0:
     _dlopenflags = sys.getdlopenflags()
@@ -45,12 +45,12 @@ if _RTLD_GLOBAL != 0:
 from lte_swig import *
 
 # import any pure python here
-from bch_viterbi_vfvb import bch_viterbi_vfvb
-from utils import *
-from pbch_scramble_sequencer_m import pbch_scramble_sequencer_m
-from rs_map_generator_m import rs_map_generator_m
+from .bch_viterbi_vfvb import bch_viterbi_vfvb
+from .utils import *
+from .pbch_scramble_sequencer_m import pbch_scramble_sequencer_m
+from .rs_map_generator_m import rs_map_generator_m
 
-from pcfich_scramble_sequencer_m import pcfich_scramble_sequencer_m
+from .pcfich_scramble_sequencer_m import pcfich_scramble_sequencer_m
 #
 
 # ----------------------------------------------------------------

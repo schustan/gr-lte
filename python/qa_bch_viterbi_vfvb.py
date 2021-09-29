@@ -20,8 +20,8 @@
 # 
 
 from gnuradio import gr, gr_unittest, blocks
-from bch_viterbi_vfvb import bch_viterbi_vfvb
-import lte_test
+from .bch_viterbi_vfvb import bch_viterbi_vfvb
+from . import lte_test
 
 class qa_bch_viterbi_vfvb (gr_unittest.TestCase):
 
@@ -44,7 +44,7 @@ class qa_bch_viterbi_vfvb (gr_unittest.TestCase):
         self.tb = None
 
     def test_001_t (self):
-        print "Viterbi decoder test"
+        print("Viterbi decoder test")
         test_range = 1030
         
         data = []
@@ -75,7 +75,7 @@ class qa_bch_viterbi_vfvb (gr_unittest.TestCase):
         print (rate)
         if not rate == 1.0:
             self.assertEqual( [1] , [0] ) #throws always n error
-        print "Viterbi decoder test END"
+        print("Viterbi decoder test END")
 
 
 if __name__ == '__main__':

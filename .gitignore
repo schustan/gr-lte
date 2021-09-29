@@ -8,3 +8,5 @@ python_matlab*
 tests/
 callgrind_february/
 valgrind-perf-run.sh
+
+*.py.bak

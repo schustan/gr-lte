@@ -21,7 +21,7 @@
 
 from gnuradio import gr, gr_unittest, blocks
 import lte_swig as lte
-import lte_test
+from . import lte_test
 
 
 class qa_sss_calculator_vcm(gr_unittest.TestCase):
@@ -65,9 +65,9 @@ class qa_sss_calculator_vcm(gr_unittest.TestCase):
         self.tb.run()
         # check data
         calc_id = self.calc.get_cell_id()
-        print calc_id
+        print(calc_id)
         assert(calc_id == cell_id) # check if id is calculated correctly
-        print self.calc.get_frame_start()
+        print(self.calc.get_frame_start())
 
 
 if __name__ == '__main__':
