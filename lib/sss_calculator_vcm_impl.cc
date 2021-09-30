@@ -27,14 +27,16 @@
 
 #include <cstdio>
 
+#include "lte/pointer_voodoo.h"
+
 namespace gr {
   namespace lte {
 
     sss_calculator_vcm::sptr
     sss_calculator_vcm::make(int fftl, std::string key_id, std::string key_offset, std::string name)
     {
-      return gnuradio::get_initial_sptr
-        (new sss_calculator_vcm_impl(fftl, key_id, key_offset, name));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new sss_calculator_vcm_impl(fftl, key_id, key_offset, name)));
     }
 
     /*

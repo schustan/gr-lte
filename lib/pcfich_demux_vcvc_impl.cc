@@ -24,6 +24,7 @@
 
 #include <gnuradio/io_signature.h>
 #include "pcfich_demux_vcvc_impl.h"
+#include "lte/pointer_voodoo.h"
 
 namespace gr {
   namespace lte {
@@ -31,8 +32,8 @@ namespace gr {
     pcfich_demux_vcvc::sptr
     pcfich_demux_vcvc::make(int N_rb_dl, std::string key, std::string out_key, std::string msg_buf_name, std::string name)
     {
-      return gnuradio::get_initial_sptr
-        (new pcfich_demux_vcvc_impl(N_rb_dl, key, out_key, msg_buf_name, name));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new pcfich_demux_vcvc_impl(N_rb_dl, key, out_key, msg_buf_name, name)));
     }
 
     /*

@@ -25,14 +25,17 @@
 #include <gnuradio/io_signature.h>
 #include "mib_unpack_vbm_impl.h"
 
+
+#include "lte/pointer_voodoo.h"
+
 namespace gr {
   namespace lte {
 
     mib_unpack_vbm::sptr
     mib_unpack_vbm::make(std::string name)
     {
-      return gnuradio::get_initial_sptr
-        (new mib_unpack_vbm_impl(name));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new mib_unpack_vbm_impl(name)));
     }
 
     /*

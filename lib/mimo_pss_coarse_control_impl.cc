@@ -27,14 +27,17 @@
 
 #include <cstdio>
 
+#include "lte/pointer_voodoo.h"
+
+
 namespace gr {
   namespace lte {
 
     mimo_pss_coarse_control::sptr
     mimo_pss_coarse_control::make(int rxant)
     {
-      return gnuradio::get_initial_sptr
-        (new mimo_pss_coarse_control_impl(rxant));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new mimo_pss_coarse_control_impl(rxant)));
     }
 
     /*

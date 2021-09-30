@@ -28,6 +28,7 @@
 #include <cstdio>
 #include <cmath>
 #include <volk/volk.h>
+#include "lte/pointer_voodoo.h"
 
 namespace gr {
   namespace lte {
@@ -35,8 +36,8 @@ namespace gr {
     pre_decoder_vcvc::sptr
     pre_decoder_vcvc::make(int rxant, int N_ant, int vlen, std::string style)
     {
-      return gnuradio::get_initial_sptr
-        (new pre_decoder_vcvc_impl(rxant, N_ant, vlen, style));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new pre_decoder_vcvc_impl(rxant, N_ant, vlen, style)));
     }
 
     /*

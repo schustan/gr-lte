@@ -32,6 +32,9 @@
 
 #include <gnuradio/filter/fir_filter.h>
 
+#include "lte/pointer_voodoo.h"
+
+
 namespace gr
 {
 namespace lte
@@ -40,8 +43,8 @@ namespace lte
 mimo_pss_fine_sync::sptr
 mimo_pss_fine_sync::make(int fftl, int rxant, int grpdelay)
 {
-    return gnuradio::get_initial_sptr
-           (new mimo_pss_fine_sync_impl(fftl, rxant, grpdelay));
+    return make_shared_ptr(gnuradio::get_initial_sptr
+           (new mimo_pss_fine_sync_impl(fftl, rxant, grpdelay)));
 }
 
 /*

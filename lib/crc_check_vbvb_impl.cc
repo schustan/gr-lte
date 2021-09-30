@@ -25,6 +25,8 @@
 #include <gnuradio/io_signature.h>
 #include "crc_check_vbvb_impl.h"
 
+#include "lte/pointer_voodoo.h"
+
 #include <cstdio>
 
 namespace gr {
@@ -33,8 +35,8 @@ namespace gr {
     crc_check_vbvb::sptr
     crc_check_vbvb::make(int data_len, int final_xor, std::string name)
     {
-      return gnuradio::get_initial_sptr
-        (new crc_check_vbvb_impl(name, data_len, final_xor));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new crc_check_vbvb_impl(name, data_len, final_xor)));
     }
 
     /*

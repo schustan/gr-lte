@@ -30,14 +30,16 @@
 #include <fftw3.h>
 #include <volk/volk.h>
 
+#include "lte/pointer_voodoo.h"
+
 namespace gr {
   namespace lte {
 
     pss_calculator_vcm::sptr
     pss_calculator_vcm::make(int fftl, std::string name)
     {
-      return gnuradio::get_initial_sptr
-        (new pss_calculator_vcm_impl(fftl, name));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new pss_calculator_vcm_impl(fftl, name)));
     }
 
     /*

@@ -26,14 +26,16 @@
 #include "layer_demapper_vcvc_impl.h"
 #include <cstdio>
 
+#include "lte/pointer_voodoo.h"
+
 namespace gr {
   namespace lte {
 
     layer_demapper_vcvc::sptr
     layer_demapper_vcvc::make(int N_ant, int vlen, std::string style, std::string name)
     {
-      return gnuradio::get_initial_sptr
-        (new layer_demapper_vcvc_impl(name, N_ant, vlen, style));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new layer_demapper_vcvc_impl(name, N_ant, vlen, style)));
     }
 
     /*

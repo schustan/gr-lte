@@ -28,14 +28,17 @@
 #include <volk/volk.h>
 #include <cmath>
 
+#include "lte/pointer_voodoo.h"
+
+
 namespace gr {
   namespace lte {
 
     sync_frequency_c::sptr
     sync_frequency_c::make(std::shared_ptr<gr::analog::sig_source_c> &sig, int fftl, std::string name)
     {
-      return gnuradio::get_initial_sptr
-        (new sync_frequency_c_impl(sig, fftl, name));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new sync_frequency_c_impl(sig, fftl, name)));
     }
 
     /*

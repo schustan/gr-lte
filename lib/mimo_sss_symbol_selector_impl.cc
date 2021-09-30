@@ -26,14 +26,16 @@
 #include "mimo_sss_symbol_selector_impl.h"
 #include <cstdio>
 
+#include "lte/pointer_voodoo.h"
+
 namespace gr {
   namespace lte {
 
     mimo_sss_symbol_selector::sptr
     mimo_sss_symbol_selector::make(int rxant, int N_rb_dl)
     {
-      return gnuradio::get_initial_sptr
-        (new mimo_sss_symbol_selector_impl(rxant, N_rb_dl));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new mimo_sss_symbol_selector_impl(rxant, N_rb_dl)));
     }
 
     /*

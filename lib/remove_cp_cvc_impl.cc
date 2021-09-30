@@ -27,14 +27,16 @@
 
 #include <cstdio>
 
+#include "lte/pointer_voodoo.h"
+
 namespace gr {
   namespace lte {
 
     remove_cp_cvc::sptr
     remove_cp_cvc::make(int fftl, std::string key, std::string name)
     {
-      return gnuradio::get_initial_sptr
-        (new remove_cp_cvc_impl(fftl, key, name));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new remove_cp_cvc_impl(fftl, key, name)));
     }
 
     /*

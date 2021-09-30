@@ -25,14 +25,17 @@
 #include <gnuradio/io_signature.h>
 #include "extract_subcarriers_vcvc_impl.h"
 
+#include "lte/pointer_voodoo.h"
+
+
 namespace gr {
   namespace lte {
 
     extract_subcarriers_vcvc::sptr
     extract_subcarriers_vcvc::make(int N_rb_dl, int fftl, std::string name)
     {
-      return gnuradio::get_initial_sptr
-        (new extract_subcarriers_vcvc_impl(name, N_rb_dl, fftl));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new extract_subcarriers_vcvc_impl(name, N_rb_dl, fftl)));
     }
 
     /*

@@ -29,14 +29,17 @@
 
 #include <boost/multi_array.hpp>
 
+#include "lte/pointer_voodoo.h"
+
+
 namespace gr {
   namespace lte {
 
     mimo_sss_calculator::sptr
     mimo_sss_calculator::make(int rxant)
     {
-      return gnuradio::get_initial_sptr
-        (new mimo_sss_calculator_impl(rxant));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new mimo_sss_calculator_impl(rxant)));
     }
 
     /*

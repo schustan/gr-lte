@@ -30,6 +30,7 @@
 #include <boost/format.hpp>
 
 #include <cstdio>
+#include "lte/pointer_voodoo.h"
 
 namespace gr {
   namespace lte {
@@ -37,8 +38,8 @@ namespace gr {
     pcfich_unpack_vfm::sptr
     pcfich_unpack_vfm::make(std::string key, std::string msg_buf_name, std::string name)
     {
-      return gnuradio::get_initial_sptr
-        (new pcfich_unpack_vfm_impl(key, msg_buf_name, name));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new pcfich_unpack_vfm_impl(key, msg_buf_name, name)));
     }
 
     /*

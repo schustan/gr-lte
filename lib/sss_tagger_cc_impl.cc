@@ -27,14 +27,16 @@
 
 #include <cstdio>
 
+#include "lte/pointer_voodoo.h"
+
 namespace gr {
   namespace lte {
 
     sss_tagger_cc::sptr
     sss_tagger_cc::make(int fftl, std::string name)
     {
-      return gnuradio::get_initial_sptr
-        (new sss_tagger_cc_impl(fftl, name));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new sss_tagger_cc_impl(fftl, name)));
     }
 
     /*

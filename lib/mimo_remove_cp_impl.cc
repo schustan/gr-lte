@@ -27,13 +27,15 @@
 
 #include <cstdio>
 
+#include "lte/pointer_voodoo.h"
+
 namespace gr {
   namespace lte {
 
     mimo_remove_cp::sptr
     mimo_remove_cp::make(int fftl, int rxant, std::string key)
     {
-      return gnuradio::get_initial_sptr(new mimo_remove_cp_impl(fftl, rxant, key));
+      return make_shared_ptr(gnuradio::get_initial_sptr(new mimo_remove_cp_impl(fftl, rxant, key)));
     }
 
     /*

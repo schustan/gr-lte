@@ -27,14 +27,16 @@
 
 #include <cstdio>
 
+#include "lte/pointer_voodoo.h"
+
 namespace gr {
   namespace lte {
 
     pss_symbol_selector_cvc::sptr
     pss_symbol_selector_cvc::make(int fftl, std::string name)
     {
-      return gnuradio::get_initial_sptr
-        (new pss_symbol_selector_cvc_impl(fftl, name));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new pss_symbol_selector_cvc_impl(fftl, name)));
     }
 
     /*

@@ -30,14 +30,16 @@
 
 #include <cstdio>
 
+#include "lte/pointer_voodoo.h"
+
 namespace gr {
   namespace lte {
 
     rough_symbol_sync_cc::sptr
     rough_symbol_sync_cc::make(int fftl, int vlen, std::string name)
     {
-      return gnuradio::get_initial_sptr
-        (new rough_symbol_sync_cc_impl(fftl, vlen, name));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new rough_symbol_sync_cc_impl(fftl, vlen, name)));
     }
 
     /*

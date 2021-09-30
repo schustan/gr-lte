@@ -30,13 +30,16 @@
 #include <volk/volk.h>
 #include "lte/pss.h"
 
+#include "lte/pointer_voodoo.h"
+
+
 namespace gr {
   namespace lte {
 
     mimo_pss_coarse_sync::sptr
     mimo_pss_coarse_sync::make(int syncl, int rxant)
     {
-      return gnuradio::get_initial_sptr(new mimo_pss_coarse_sync_impl(syncl, rxant));
+      return make_shared_ptr(gnuradio::get_initial_sptr(new mimo_pss_coarse_sync_impl(syncl, rxant)));
     }
 
     /*

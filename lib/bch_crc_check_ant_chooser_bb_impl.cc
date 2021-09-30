@@ -24,6 +24,9 @@
 
 #include <gnuradio/io_signature.h>
 #include "bch_crc_check_ant_chooser_bb_impl.h"
+
+#include "lte/pointer_voodoo.h"
+
 #include<cstdio>
 
 namespace gr {
@@ -32,8 +35,8 @@ namespace gr {
     bch_crc_check_ant_chooser_bb::sptr
     bch_crc_check_ant_chooser_bb::make(std::string name)
     {
-      return gnuradio::get_initial_sptr
-        (new bch_crc_check_ant_chooser_bb_impl(name));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new bch_crc_check_ant_chooser_bb_impl(name)));
     }
 
     /*

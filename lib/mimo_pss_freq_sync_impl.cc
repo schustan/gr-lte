@@ -30,6 +30,9 @@
 
 #include <cmath>
 
+#include "lte/pointer_voodoo.h"
+
+
 namespace gr
 {
 namespace lte
@@ -38,8 +41,8 @@ namespace lte
 mimo_pss_freq_sync::sptr
 mimo_pss_freq_sync::make(int fftl, int rxant, std::shared_ptr<gr::analog::sig_source_c> &sig)
 {
-    return gnuradio::get_initial_sptr
-           (new mimo_pss_freq_sync_impl(fftl, rxant, sig));
+    return make_shared_ptr(gnuradio::get_initial_sptr
+           (new mimo_pss_freq_sync_impl(fftl, rxant, sig)));
 }
 
 /*

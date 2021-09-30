@@ -27,14 +27,16 @@
 
 #include <cstdio>
 
+#include "lte/pointer_voodoo.h"
+
 namespace gr {
   namespace lte {
 
     repeat_message_source_vf::sptr
     repeat_message_source_vf::make(int vector_len, std::string name)
     {
-      return gnuradio::get_initial_sptr
-        (new repeat_message_source_vf_impl(vector_len, name));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new repeat_message_source_vf_impl(vector_len, name)));
     }
 
     /*

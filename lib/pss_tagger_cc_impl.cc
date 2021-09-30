@@ -25,14 +25,16 @@
 #include <gnuradio/io_signature.h>
 #include "pss_tagger_cc_impl.h"
 
+#include "lte/pointer_voodoo.h"
+
 namespace gr {
   namespace lte {
 
     pss_tagger_cc::sptr
     pss_tagger_cc::make(int fftl, std::string name)
     {
-      return gnuradio::get_initial_sptr
-        (new pss_tagger_cc_impl(fftl, name));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new pss_tagger_cc_impl(fftl, name)));
     }
 
     /*

@@ -27,14 +27,16 @@
 
 #include <cstdio>
 
+#include "lte/pointer_voodoo.h"
+
 namespace gr {
   namespace lte {
 
     pbch_demux_vcvc::sptr
     pbch_demux_vcvc::make(int N_rb_dl, int rxant, std::string name)
     {
-      return gnuradio::get_initial_sptr
-        (new pbch_demux_vcvc_impl(N_rb_dl, rxant, name));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new pbch_demux_vcvc_impl(N_rb_dl, rxant, name)));
     }
 
     /*

@@ -27,6 +27,9 @@
 
 #include <cstdio>
 
+#include "lte/pointer_voodoo.h"
+
+
 namespace gr
 {
 namespace lte
@@ -35,8 +38,8 @@ namespace lte
 mimo_pss_tagger::sptr
 mimo_pss_tagger::make(int fftl)
 {
-    return gnuradio::get_initial_sptr
-           (new mimo_pss_tagger_impl(fftl));
+    return make_shared_ptr(gnuradio::get_initial_sptr
+           (new mimo_pss_tagger_impl(fftl)));
 }
 
 /*

@@ -26,6 +26,7 @@
 #include "mimo_sss_tagger_impl.h"
 
 #include <cstdio>
+#include "lte/pointer_voodoo.h"
 
 namespace gr {
   namespace lte {
@@ -33,8 +34,8 @@ namespace gr {
     mimo_sss_tagger::sptr
     mimo_sss_tagger::make(int rxant, int N_rb_dl)
     {
-      return gnuradio::get_initial_sptr
-        (new mimo_sss_tagger_impl(rxant, N_rb_dl));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new mimo_sss_tagger_impl(rxant, N_rb_dl)));
     }
 
     /*

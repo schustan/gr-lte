@@ -170,9 +170,9 @@ endif(DOXYGEN_FOUND)
 # find_package(Gnuradio "version")
 
 set(GR_REQUIRED_COMPONENTS RUNTIME FILTER)
-find_package(Gnuradio "3.7.2" REQUIRED)
+find_package(Gnuradio "3.8.2" REQUIRED)
 
-list(APPEND CMAKE_PREFIX_PATH "/root/gr_prefix/")
+#list(APPEND CMAKE_PREFIX_PATH "/root/gr_prefix/")
 
 if(NOT CPPUNIT_FOUND)
     message(FATAL_ERROR "CppUnit required to compile lte")
@@ -189,7 +189,7 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/include
     ${CMAKE_BINARY_DIR}/lib
     ${CMAKE_BINARY_DIR}/include
-    /root/gr_prefix/include
+    #/root/gr_prefix/include
     ${Boost_INCLUDE_DIRS}
     ${CPPUNIT_INCLUDE_DIRS}
     ${GNURADIO_ALL_INCLUDE_DIRS}

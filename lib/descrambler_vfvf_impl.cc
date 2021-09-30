@@ -29,14 +29,17 @@
 #include <volk/volk.h>
 #include <boost/format.hpp>
 
+#include "lte/pointer_voodoo.h"
+
+
 namespace gr {
   namespace lte {
 
     descrambler_vfvf::sptr
     descrambler_vfvf::make(std::string tag_key, std::string msg_buf_name, int len, std::string name)
     {
-      return gnuradio::get_initial_sptr
-        (new descrambler_vfvf_impl(name, tag_key, msg_buf_name, len));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new descrambler_vfvf_impl(name, tag_key, msg_buf_name, len)));
     }
 
     /*

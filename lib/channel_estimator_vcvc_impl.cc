@@ -30,6 +30,9 @@
 #include <cstdio>
 #include <string>
 
+#include "lte/pointer_voodoo.h"
+
+
 namespace gr {
   namespace lte {
 
@@ -41,10 +44,10 @@ namespace gr {
         const std::vector<std::vector<gr_complex> > &pilot_symbols,
         std::string name)
     {
-      return gnuradio::get_initial_sptr(
+      return make_shared_ptr(gnuradio::get_initial_sptr(
           new channel_estimator_vcvc_impl(rxant, subcarriers, tag_key,
                                           msg_buf_name, pilot_carriers,
-                                          pilot_symbols, name));
+                                          pilot_symbols, name)));
     }
 
     /*

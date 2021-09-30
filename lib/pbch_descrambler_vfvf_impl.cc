@@ -30,14 +30,16 @@
 
 #include <cstdio>
 
+#include "lte/pointer_voodoo.h"
+
 namespace gr {
   namespace lte {
 
     pbch_descrambler_vfvf::sptr
     pbch_descrambler_vfvf::make(std::string key)
     {
-      return gnuradio::get_initial_sptr
-        (new pbch_descrambler_vfvf_impl(key));
+      return make_shared_ptr(gnuradio::get_initial_sptr
+        (new pbch_descrambler_vfvf_impl(key)));
     }
 
     /*
