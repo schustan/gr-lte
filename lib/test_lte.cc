@@ -24,10 +24,10 @@
 #include "config.h"
 #endif
 
-//#include <cppunit/TextTestRunner.h>
-//#include <cppunit/XmlOutputter.h>
+#include <cppunit/TextTestRunner.h>
+#include <cppunit/XmlOutputter.h>
 
-//#include <gnuradio/unittests.h>
+#include <gnuradio/unittests.h>
 #include "qa_lte.h"
 #include <iostream>
 
@@ -35,12 +35,12 @@ int
 main (int argc, char **argv)
 {
   // TODO: FIX UNIT TESTS!
-  /*CppUnit::TextTestRunner runner;
+  CppUnit::TextTestRunner runner;
   std::ofstream xmlfile(get_unittest_path("lte.xml").c_str());
   CppUnit::XmlOutputter *xmlout = new CppUnit::XmlOutputter(&runner.result(), xmlfile);
 
   runner.addTest(qa_lte::suite());
-  runner.setOutputter(xmlout);*/
+  runner.setOutputter(xmlout);
 
   bool was_successful = true; // runner.run("", false);
 
