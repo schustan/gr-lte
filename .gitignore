@@ -10,3 +10,4 @@ callgrind_february/
 valgrind-perf-run.sh
 compile_commands.json
 .clangd
+.vscode
