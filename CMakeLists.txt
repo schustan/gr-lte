@@ -174,6 +174,11 @@ else(DOXYGEN_FOUND)
     option(ENABLE_DOXYGEN "Build docs using Doxygen" OFF)
 endif(DOXYGEN_FOUND)
 
+# Set component parameters
+set(GR_LTE_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include CACHE INTERNAL "" FORCE)
+set(GR_LTE_SWIG_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/swig CACHE INTERNAL "" FORCE)
+set(GR_SWIG_TARGET_DEPS gnuradio::runtime_swig)
+
 ########################################################################
 # Create uninstall target
 ########################################################################
