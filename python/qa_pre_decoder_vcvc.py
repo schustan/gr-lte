@@ -21,7 +21,7 @@
 
 from gnuradio import gr, gr_unittest, blocks
 import lte_swig as lte
-import lte_test
+from . import lte_test
 
 
 class qa_pre_decoder_vcvc(gr_unittest.TestCase):
@@ -53,7 +53,7 @@ class qa_pre_decoder_vcvc(gr_unittest.TestCase):
         self.tb = None
 
     def test_001_generated(self):
-        print "\ntest_001_generated"
+        print("\ntest_001_generated")
         cell_id = 124
         N_ant = 2
         style = "tx_diversity"
@@ -79,17 +79,17 @@ class qa_pre_decoder_vcvc(gr_unittest.TestCase):
 
         exp_res = []
         for i in range(len(stream) / 240):
-            print i
+            print(i)
             lay0 = layer_mapped[0][i * 120:(i + 1) * 120]
             lay1 = layer_mapped[1][i * 120:(i + 1) * 120]
             comb = [lay0, lay1]
             exp_res.extend(lte_test.prepare_for_demapper_block(comb, N_ant, style))
 
-        print "test 001 final ASSERT!"
-        print self.assertComplexTuplesAlmostEqual(res, exp_res)
+        print("test 001 final ASSERT!")
+        print(self.assertComplexTuplesAlmostEqual(res, exp_res))
 
     def test_002_pcfich(self):
-        print "test_002_pcfich"
+        print("test_002_pcfich")
 
         # some constants
         cell_id = 124

@@ -22,13 +22,13 @@
 from gnuradio import gr, gr_unittest, blocks
 #import lte_swig as lte
 import lte_swig as lte
-import lte_test
+from . import lte_test
 
 class qa_pbch_descrambler_vfvf (gr_unittest.TestCase):
 
     def setUp(self):
         self.tb = gr.top_block()
-        print "begin setup"
+        print("begin setup")
 
 
         key = "descr_part"
@@ -39,7 +39,7 @@ class qa_pbch_descrambler_vfvf (gr_unittest.TestCase):
         self.snk = blocks.vector_sink_f(120)
 
         self.tb.connect(self.src, self.rpt, self.stv, self.descr, self.snk)
-        print "end setup"
+        print("end setup")
 
     def tearDown(self):
         self.tb = None
@@ -62,20 +62,20 @@ class qa_pbch_descrambler_vfvf (gr_unittest.TestCase):
         # set up fg
         self.tb.run()
         res = self.snk.data()
-        print len(res)
+        print(len(res))
 
         count = 0
         for i in range(len(res)/len(n_bch)):
             part = res[len(n_bch)*i:(i+1)*len(n_bch)]
             try:
                 self.assertEqual(part, n_bch,3)
-                print str(i) + "\tSUCCESS"
+                print(str(i) + "\tSUCCESS")
             except:
-                print str(i)
+                print(str(i))
                 count = count +1
-        print "\nresult"
-        print count
-        print len(res)/len(n_bch)
+        print("\nresult")
+        print(count)
+        print(len(res)/len(n_bch))
 
     def test_002_data(self):
         cell_id = 124
@@ -97,20 +97,20 @@ class qa_pbch_descrambler_vfvf (gr_unittest.TestCase):
         self.tb.run()
         
         res = self.snk.data()
-        print len(res)
+        print(len(res))
 
         count = 0
         for i in range(len(res)/len(ref_bch)):
             part = res[len(ref_bch)*i:(i+1)*len(ref_bch)]
             try:
                 self.assertEqual(part, ref_bch,3)
-                print str(i) + "\tSUCCESS"
+                print(str(i) + "\tSUCCESS")
             except:
-                print str(i)
+                print(str(i))
                 count = count +1
-        print "\nresult"
-        print count
-        print len(res)/len(ref_bch)
+        print("\nresult")
+        print(count)
+        print(len(res)/len(ref_bch))
 
 
 

@@ -203,7 +203,7 @@ def make_swig_interface_file(di, swigdocfilename, custom_output=None):
             make_funcs.add(make_func.name())
             output.append(make_block_entry(di, block))
         except block.ParsingError:
-            print('Parsing error for block %s' % block.name())
+            print(('Parsing error for block %s' % block.name()))
 
     # Create docstrings for functions
     # Don't include the make functions since they have already been dealt with.
@@ -212,7 +212,7 @@ def make_swig_interface_file(di, swigdocfilename, custom_output=None):
         try:
             output.append(make_func_entry(f))
         except f.ParsingError:
-            print('Parsing error for function %s' % f.name())
+            print(('Parsing error for function %s' % f.name()))
 
     # Create docstrings for classes
     block_names = [block.name() for block in blocks]
@@ -221,7 +221,7 @@ def make_swig_interface_file(di, swigdocfilename, custom_output=None):
         try:
             output.append(make_class_entry(k))
         except k.ParsingError:
-            print('Parsing error for class %s' % k.name())
+            print(('Parsing error for class %s' % k.name()))
 
     # Docstrings are not created for anything that is not a function or a class.
     # If this excludes anything important please add it here.
@@ -236,7 +236,7 @@ if __name__ == "__main__":
     # Parse command line options and set up doxyxml.
     err_msg = "Execute using: python swig_doc.py xml_path outputfilename"
     if len(sys.argv) != 3:
-        raise StandardError(err_msg)
+        raise Exception(err_msg)
     xml_path = sys.argv[1]
     swigdocfilename = sys.argv[2]
     di = DoxyIndex(xml_path)
