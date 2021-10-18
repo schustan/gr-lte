@@ -22,7 +22,7 @@
 from gnuradio import gr, gr_unittest, blocks
 import lte_swig as lte
 import pmt
-from . import lte_test
+import lte_test
 import numpy as np
 import os
 
@@ -100,7 +100,7 @@ class qa_channel_estimator_vcvc (gr_unittest.TestCase):
 
         failed = 0
         first_failed = -1
-        for i in range(len(res)/subcarriers):
+        for i in range(int(len(res)/subcarriers)):
             #print i
             vec = res[i*subcarriers:(i+1)*subcarriers]
             try:

@@ -22,7 +22,7 @@
 from gnuradio import gr, gr_unittest, blocks
 import lte_swig as lte
 import numpy as np
-from . import lte_test
+import lte_test
 
 class qa_pbch_demux_vcvc (gr_unittest.TestCase):
 

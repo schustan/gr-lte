@@ -35,7 +35,7 @@ def pbch_scrambling(data, cell_id):
 
 def expand_for_scrambling(data):
     output = []
-    for i in range(1920 / len(data)):
+    for i in range(int(1920 / len(data))):
         output.extend(data)
     return output
 

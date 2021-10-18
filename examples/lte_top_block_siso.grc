@@ -205,7 +205,7 @@ blocks:
     comment: ''
     filter: ''
     frequency: '1815000000'
-    gain1: '''fast_attack'''
+    gain1: '''manual'''
     manual_gain1: '64'
     maxoutbuf: '0'
     minoutbuf: '0'

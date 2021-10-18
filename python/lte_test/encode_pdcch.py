@@ -226,7 +226,7 @@ def get_pdcch_scrambling_sequence(length, cell_id, ns):
 
 def reg_group(data):
     res = []
-    for i in range(len(data) / 4):
+    for i in range(int(len(data) / 4)):
         part = data[4 * i:4 * (i + 1)]
         #print "{0}\t{1}\t{2}\t{3}".format(i, 4*i, 4*(i+1), part)
         res.append(part)

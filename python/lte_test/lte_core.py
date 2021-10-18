@@ -68,7 +68,7 @@ def nrz_encoding(data):
 def qpsk_modulation(data):
     output = []
     nrz_data = nrz_encoding(data)
-    for i in range(len(nrz_data) / 2):
+    for i in range(int(len(nrz_data) / 2)):
         mod = complex(nrz_data[i * 2 + 0] / math.sqrt(2), nrz_data[i * 2 + 1] / math.sqrt(2))
         output.extend([mod])
     return output
@@ -94,7 +94,7 @@ def layer_mapping(data, N_ant, style):
     elif N_ant == 2:
         M_layer_symb = M_symb / 2
         x = [[], []]
-        for i in range(M_layer_symb):
+        for i in range(int(M_layer_symb)):
             x[0].append(data[2 * i + 0])
             x[1].append(data[2 * i + 1])
         output = x
@@ -107,7 +107,7 @@ def layer_mapping(data, N_ant, style):
             data.extend([0] * 2)
 
         x = [[], [], [], []]
-        for i in range(M_layer_symb):
+        for i in range(int(M_layer_symb)):
             x[0].append(data[4 * i + 0])
             x[1].append(data[4 * i + 1])
             x[2].append(data[4 * i + 2])

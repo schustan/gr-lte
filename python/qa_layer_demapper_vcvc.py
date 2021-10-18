@@ -21,7 +21,7 @@
 
 from gnuradio import gr, gr_unittest, blocks
 import lte_swig as lte
-from . import lte_test
+import lte_test
 import numpy as np
 
 
@@ -78,14 +78,14 @@ class qa_layer_demapper_vcvc(gr_unittest.TestCase):
         mapped[0] = lte_test.layer_mapping(data, 1, style)[0]
         m2 = lte_test.layer_mapping(data, 2, style)
         m2a = []
-        for i in range(len(m2[0]) / 120):
+        for i in range(int(len(m2[0]) / 120)):
             m2a.extend(m2[0][120 * i:(i + 1) * 120])
             m2a.extend(m2[1][120 * i:(i + 1) * 120])
         mapped[1] = m2a
 
         m4 = lte_test.layer_mapping(data, 4, style)
         m4a = []
-        for i in range(len(m4[0]) / 60):
+        for i in range(int(len(m4[0]) / 60)):
             m4a.extend(m4[0][i * 60:(i + 1) * 60])
             m4a.extend(m4[1][i * 60:(i + 1) * 60])
             m4a.extend(m4[2][i * 60:(i + 1) * 60])

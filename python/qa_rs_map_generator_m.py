@@ -20,7 +20,7 @@
 # 
 
 from gnuradio import gr, gr_unittest, blocks
-from .rs_map_generator_m import rs_map_generator_m
+from rs_map_generator_m import rs_map_generator_m
 import pmt
 import time
 

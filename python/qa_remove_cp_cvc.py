@@ -22,7 +22,7 @@
 from gnuradio import gr, gr_unittest, blocks
 import lte_swig as lte
 import pmt
-from . import lte_test
+import lte_test
 
 class qa_remove_cp_cvc (gr_unittest.TestCase):
 
@@ -70,9 +70,9 @@ class qa_remove_cp_cvc (gr_unittest.TestCase):
             for sym in range(7):
                 vec = []
                 if sym == 0:
-                    vec.extend([0]*cpl0)
+                    vec.extend([0]*int(cpl0))
                 else:
-                    vec.extend([0]*cpl1)
+                    vec.extend([0]*int(cpl1))
                 vec.extend(symvals)
                 in_data.extend(vec)
                 data.extend(symvals)
@@ -102,7 +102,7 @@ class qa_remove_cp_cvc (gr_unittest.TestCase):
         slotl = 7*fftl + 6*cpl1 + cpl0
         srcid = "test_src"
         tag_list = []
-        for i in range(slots):
+        for i in range(int(slots)):
             for sym in range(7):
                 offset = 0
                 if sym == 0:

@@ -146,29 +146,29 @@ def get_sss(cell_id):
     s0 = np.zeros(31)
     s1 = np.zeros(31)
     for n in range(31):
-        s0[n] = sX[(n + m0) % 31]
-        s1[n] = sX[(n + m1) % 31]
+        s0[n] = sX[int((n + m0) % 31)]
+        s1[n] = sX[int((n + m1) % 31)]
 
     c0 = np.zeros(31)
     c1 = np.zeros(31)
     for n in range(31):
-        c0[n] = cX[(n + nid2  ) % 31]
-        c1[n] = cX[(n + nid2 + 3) % 31]
+        c0[n] = cX[int((n + nid2  ) % 31)]
+        c1[n] = cX[int((n + nid2 + 3) % 31)]
 
     z1m0 = np.zeros(31)
     z1m1 = np.zeros(31)
     for n in range(31):
-        z1m0[n] = zX[(n + (m0 % 8)) % 31]
-        z1m1[n] = zX[(n + (m1 % 8)) % 31]
+        z1m0[n] = zX[int((n + (m0 % 8)) % 31)]
+        z1m1[n] = zX[int((n + (m1 % 8)) % 31)]
 
     sss0 = np.zeros(62)
     sss5 = np.zeros(62)
     for n in range(31):
-        sss0[2 * n + 0] = s0[n] * c0[n]
-        sss0[2 * n + 1] = s1[n] * c1[n] * z1m0[n]
+        sss0[int(2 * n + 0)] = s0[n] * c0[n]
+        sss0[int(2 * n + 1)] = s1[n] * c1[n] * z1m0[n]
 
-        sss5[2 * n + 0] = s1[n] * c0[n]
-        sss5[2 * n + 1] = s0[n] * c1[n] * z1m1[n]
+        sss5[int(2 * n + 0)] = s1[n] * c0[n]
+        sss5[int(2 * n + 1)] = s0[n] * c1[n] * z1m1[n]
 
     return [sss0, sss5]
 

@@ -21,7 +21,7 @@
 
 from gnuradio import gr, gr_unittest, blocks
 import lte_swig as lte
-from . import lte_test
+import lte_test
 
 class qa_qpsk_soft_demod_vcvf (gr_unittest.TestCase):
 
@@ -44,7 +44,7 @@ class qa_qpsk_soft_demod_vcvf (gr_unittest.TestCase):
         tl = 1024
         data = []
         input_data = []
-        for i in range(tl/4):
+        for i in range(int(tl/4)):
             mib = lte_test.pack_mib(50,0,1.0, i*4)
             bch = tuple(lte_test.encode_bch(mib, N_ant))
             p_scrambled = lte_test.pbch_scrambling(bch, cell_id)

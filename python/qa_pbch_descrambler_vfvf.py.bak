@@ -100,7 +100,7 @@ class qa_pbch_descrambler_vfvf (gr_unittest.TestCase):
         print len(res)
 
         count = 0
-        for i in range(len(res)/len(ref_bch)):
+        for i in range(int(len(res)/len(ref_bch))):
             part = res[len(ref_bch)*i:(i+1)*len(ref_bch)]
             try:
                 self.assertEqual(part, ref_bch,3)
