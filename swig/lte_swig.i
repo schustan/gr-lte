@@ -45,6 +45,11 @@
 #include "lte/mimo_remove_cp.h"
 %}
 
+namespace gr {
+    namespace analog { 
+        %rename(sig_source_c) sig_source<std::complex<float> > ;
+    }
+}
 
 %include "lte/mib_unpack_vbm.h"
 GR_SWIG_BLOCK_MAGIC2(lte, mib_unpack_vbm);
