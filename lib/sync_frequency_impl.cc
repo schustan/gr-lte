@@ -32,7 +32,11 @@ namespace gr {
   namespace lte {
 
     sync_frequency::sptr
-    sync_frequency::make(boost::shared_ptr<gr::analog::sig_source_c> &sig, int fftl, std::string name)
+    sync_frequency::make(
+        boost::shared_ptr<gr::analog::sig_source<std::complex<float> > >
+        //boost::shared_ptr<gr::analog::sig_source_c>
+                           //gr::analog::sig_source_c::sptr
+                            &sig, int fftl, std::string name)
     {
       return gnuradio::get_initial_sptr
         (new sync_frequency_impl(sig, fftl, name));

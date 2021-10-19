@@ -19,8 +19,8 @@
  */
 
 
-#ifndef INCLUDED_LTE_SYNC_FREQUENCY_C_H
-#define INCLUDED_LTE_SYNC_FREQUENCY_C_H
+#ifndef INCLUDED_LTE_SYNC_FREQUENCY_H
+#define INCLUDED_LTE_SYNC_FREQUENCY_H
 
 #include <lte/api.h>
 #include <gnuradio/sync_block.h>
@@ -55,5 +55,5 @@ namespace gr {
   } // namespace lte
 } // namespace gr
 
-#endif /* INCLUDED_LTE_SYNC_FREQUENCY_C_H */
+#endif /* INCLUDED_LTE_SYNC_FREQUENCY_H */
 

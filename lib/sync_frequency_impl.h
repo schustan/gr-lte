@@ -18,8 +18,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_LTE_SYNC_FREQUENCY_C_IMPL_H
-#define INCLUDED_LTE_SYNC_FREQUENCY_C_IMPL_H
+#ifndef INCLUDED_LTE_SYNC_FREQUENCY_IMPL_H
+#define INCLUDED_LTE_SYNC_FREQUENCY_IMPL_H
 
 #include <lte/sync_frequency.h>
 
@@ -61,5 +61,5 @@ namespace gr {
   } // namespace lte
 } // namespace gr
 
-#endif /* INCLUDED_LTE_SYNC_FREQUENCY_C_IMPL_H */
+#endif /* INCLUDED_LTE_SYNC_FREQUENCY_IMPL_H */
 

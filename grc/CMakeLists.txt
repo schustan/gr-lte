@@ -41,7 +41,7 @@ install(FILES
     lte_pss_tagger_cc.block.yml
     lte_sss_symbol_selector_cvc.block.yml
     lte_sss_tagger_cc.block.yml
-    lte_sync_frequency_c.block.yml
+    lte_sync_frequency.block.yml
     lte_descrambler_vfvf.block.yml
     lte_pcfich_scramble_sequencer_m.block.yml
     lte_pcfich_demux_vcvc.block.yml

@@ -22,7 +22,7 @@
 from gnuradio import gr, gr_unittest
 import lte_swig as lte
 
-class qa_sync_frequency_c (gr_unittest.TestCase):
+class qa_sync_frequency (gr_unittest.TestCase):
 
     def setUp (self):
         self.tb = gr.top_block ()
@@ -37,4 +37,4 @@ class qa_sync_frequency_c (gr_unittest.TestCase):
 
 
 if __name__ == '__main__':
-    gr_unittest.run(qa_sync_frequency_c, "qa_sync_frequency_c.xml")
+    gr_unittest.run(qa_sync_frequency, "qa_sync_frequency.xml")
