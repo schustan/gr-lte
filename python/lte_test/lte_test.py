@@ -24,13 +24,13 @@ import pmt
 import numpy as np
 import scipy.io
 import math
-from .mib import *
-from .encode_bch import *
-from .encode_pbch import *
-from .encode_pcfich import *
-from .encode_phich import *
-from .encode_pdcch import *
-from . import lte_phy
+from testutil.mib import *
+from testutil.encode_bch import *
+from testutil.encode_pbch import *
+from testutil.encode_pcfich import *
+from testutil.encode_phich import *
+from testutil.encode_pdcch import *
+from testutil import lte_phy
 
 # This is a function to help test setup
 def get_tag_list(data_len, value_range, tag_key, srcid):
@@ -410,8 +410,8 @@ def transform_symbol_to_time_domain(symbol, fftl, nsym):
     N_rb_dl = int(len(symbol) // 12)
     # map used symbols to correct subcarriers
     f_vec = np.zeros(fftl, dtype=np.complex)
-    f_vec[1:12 * N_rb_dl / 2 + 1] = symbol[12 * N_rb_dl / 2:12 * N_rb_dl]
-    f_vec[fftl - 12 * N_rb_dl / 2:fftl] = symbol[0:12 * N_rb_dl / 2]
+    f_vec[1:12 * N_rb_dl // 2 + 1] = symbol[12 * N_rb_dl // 2:12 * N_rb_dl]
+    f_vec[fftl - 12 * N_rb_dl // 2:fftl] = symbol[0:12 * N_rb_dl // 2]
 
     # do an IFFT
     t_vec = np.fft.ifft(f_vec, fftl)
@@ -425,7 +425,7 @@ def transform_symbol_to_time_domain(symbol, fftl, nsym):
 
 
 def transform_layer_to_time_domain(frame_layer, fftl):
-    print("frame_layer", np.shape(frame_layer))
+#    print("frame_layer", np.shape(frame_layer))
     # frame_layer contains OFDM symbols as arrays within an array
     assert(len(frame_layer) % 7 == 0)
     n_slots = int(len(frame_layer) // 7)
